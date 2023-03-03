@@ -24,6 +24,8 @@ declare module "next-auth" {
     } & DefaultSession["user"];
   }
 
+  // TODO: add a user role. "admin" or "user"
+
   // interface User {
   //   // ...other properties
   //   // role: UserRole;
