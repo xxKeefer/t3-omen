@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       <div className="hero ">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-9xl font-black tracking-tight text-white">
+            <h1 className="text-9xl font-black tracking-tighter text-white">
               Omen
             </h1>
             <h2 className="py-6 text-5xl font-normal text-white">

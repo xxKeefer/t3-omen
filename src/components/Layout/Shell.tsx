@@ -16,6 +16,7 @@ export const Shell = ({ children }: Props) => {
         checked={show}
         type="checkbox"
         className="drawer-toggle"
+        readOnly
       />
       <div className="drawer-content max-h-min">
         <header className="navbar bg-base-100">
