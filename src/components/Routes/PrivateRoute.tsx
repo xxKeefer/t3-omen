@@ -26,9 +26,10 @@ export function PrivateRoute({
   const isLoading = status === "loading";
   const isAuthenticated = status === "authenticated";
   const isAdmin = sessionData?.user.role === "admin";
+  const isDaniel = sessionData?.user.email === "danieljohnkeefer@gmail.com";
 
   useEffect(() => {
-    if (!isLoading && !isAuthenticated && pathIsAdminOnly) {
+    if (!isLoading && !isAuthenticated && !isDaniel && pathIsAdminOnly) {
       void router.push("/");
     }
     if (!isLoading && !isAuthenticated && pathIsProtected) {

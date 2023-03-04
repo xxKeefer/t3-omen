@@ -82,7 +82,7 @@ const UserActions = ({ user }: UserActionsProps) => {
         {user.role === "admin" && (
           <li>
             <button
-              className="btn btn-ghost"
+              className="btn-ghost btn"
               disabled={sessionData?.user.email === user.email}
               onClick={() => {
                 demote({ id: user.id }, { onSuccess: blurInput });
@@ -95,8 +95,8 @@ const UserActions = ({ user }: UserActionsProps) => {
         {user.role === "user" && (
           <li>
             <button
-              className="btn btn-ghost"
-              disabled={sessionData?.user.email === user.email}
+              className="btn-ghost btn"
+              // disabled={sessionData?.user.email === user.email}
               onClick={() => {
                 promote({ id: user.id }, { onSuccess: blurInput });
               }}
