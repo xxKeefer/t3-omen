@@ -9,12 +9,12 @@ const config = {
   daisyui: {
     themes: [
       {
-        omenDark: {
-          primary: "#45AEEE",
-          secondary: "#E8488A",
+        omenLight: {
+          primary: "#E8488A",
+          secondary: "#45AEEE",
           accent: "#701A75",
-          neutral: "#FFFFFF",
-          "base-100": "#1A1A1A",
+          neutral: "#1A1A1A",
+          "base-100": "#FFFFFF",
           info: "#4AA8C0",
           success: "#BAD455",
           warning: "#EE8133",
@@ -22,12 +22,12 @@ const config = {
         },
       },
       {
-        omenLight: {
-          primary: "#E8488A",
-          secondary: "#45AEEE",
+        omenDark: {
+          primary: "#45AEEE",
+          secondary: "#E8488A",
           accent: "#701A75",
-          neutral: "#1A1A1A",
-          "base-100": "#FFFFFF",
+          neutral: "#FFFFFF",
+          "base-100": "#1A1A1A",
           info: "#4AA8C0",
           success: "#BAD455",
           warning: "#EE8133",

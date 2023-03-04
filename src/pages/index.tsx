@@ -3,7 +3,6 @@ import Head from "next/head";
 import Link from "next/link";
 
 const Home: NextPage = () => {
-  // TODO add a sign in button
   return (
     <>
       <Head>

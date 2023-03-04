@@ -5,13 +5,14 @@ import { NextStudioHead } from "next-sanity/studio/head";
 import config from "../../../sanity.config";
 
 export default function StudioPage() {
-  // TODO: redriect if user is not admin
   return (
     <>
       <Head>
         <NextStudioHead />
       </Head>
-      <NextStudio config={config} />
+      <div className="w-full overflow-y-hidden [&>*]:w-full">
+        <NextStudio config={config} />
+      </div>
     </>
   );
 }
