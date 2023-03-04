@@ -114,7 +114,7 @@ const enforceUserIsAdmin = t.middleware(({ ctx, next }) => {
   }
   if (
     ctx.session.user.role !== "admin" ||
-    ctx.session.user.email === "danieljohnkeefer@gmail.com"
+    ctx.session.user.email !== "danieljohnkeefer@gmail.com"
   ) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
