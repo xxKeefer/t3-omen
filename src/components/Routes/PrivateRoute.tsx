@@ -36,7 +36,7 @@ export function PrivateRoute({
       void router.push("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading, isAuthenticated, pathIsProtected, isAdmin]);
+  }, [isLoading, isAuthenticated, pathIsProtected, isAdmin, isDaniel]);
 
   //TODO: Add a better spinner for this
   if ((isLoading || !isAuthenticated) && isProtectedRouted) {
