@@ -27,7 +27,7 @@ export const Shell = ({ children }: Props) => {
       </div>
       <div className="drawer-side">
         <div onClick={toggle} className="drawer-overlay" />
-        <SideMenu />
+        <SideMenu closeMenu={() => setShow(false)} />
       </div>
     </div>
   );

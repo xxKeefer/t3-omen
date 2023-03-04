@@ -2,7 +2,11 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 
-export const SideMenu = () => {
+type Props = {
+  closeMenu: () => void;
+};
+
+export const SideMenu = ({ closeMenu }: Props) => {
   const { data: sessionData } = useSession();
 
   const role = sessionData?.user.role;
@@ -16,12 +20,12 @@ export const SideMenu = () => {
           </li>
           <li>
             <Link href={"/admin-dashboard"}>
-              <button>Admin Dashboard</button>
+              <button onClick={closeMenu}>Admin Dashboard</button>
             </Link>
           </li>
           <li>
             <Link href={"/studio"}>
-              <button>Content Studio</button>
+              <button onClick={closeMenu}>Content Studio</button>
             </Link>
           </li>
         </>
