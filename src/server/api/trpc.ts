@@ -113,19 +113,7 @@ const enforceUserIsAdmin = t.middleware(({ ctx, next }) => {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
 
-  //bootstrapping bypass
-  if (ctx.session.user.email === "danieljohnkeefer@gmail.com") {
-    return next({
-      ctx: {
-        // infers the `session` as non-nullable
-        session: { ...ctx.session, user: ctx.session.user },
-      },
-    });
-  }
-  if (
-    ctx.session.user.role !== "admin" ||
-    ctx.session.user.email !== "danieljohnkeefer@gmail.com"
-  ) {
+  if (ctx.session.user.role !== "admin") {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
   return next({

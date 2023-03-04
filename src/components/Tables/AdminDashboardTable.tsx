@@ -96,7 +96,7 @@ const UserActions = ({ user }: UserActionsProps) => {
           <li>
             <button
               className="btn-ghost btn"
-              // disabled={sessionData?.user.email === user.email}
+              disabled={sessionData?.user.email === user.email}
               onClick={() => {
                 promote({ id: user.id }, { onSuccess: blurInput });
               }}

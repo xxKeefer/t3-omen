@@ -26,17 +26,16 @@ export function PrivateRoute({
   const isLoading = status === "loading";
   const isAuthenticated = status === "authenticated";
   const isAdmin = sessionData?.user.role === "admin";
-  const isDaniel = sessionData?.user.email === "danieljohnkeefer@gmail.com";
 
   useEffect(() => {
-    if (!isLoading && !isAuthenticated && !isDaniel && pathIsAdminOnly) {
+    if (!isLoading && !isAuthenticated && pathIsAdminOnly) {
       void router.push("/");
     }
     if (!isLoading && !isAuthenticated && pathIsProtected) {
       void router.push("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading, isAuthenticated, pathIsProtected, isAdmin, isDaniel]);
+  }, [isLoading, isAuthenticated, pathIsProtected, isAdmin]);
 
   //TODO: Add a better spinner for this
   if ((isLoading || !isAuthenticated) && isProtectedRouted) {
