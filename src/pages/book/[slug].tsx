@@ -3,7 +3,7 @@ import Head from "next/head";
 import { PortableText } from "@portabletext/react";
 import { portableComponentsMap } from "~/components/sanity/PortableText";
 import { getAllPageSlugs, getPage } from "~/sanity/requests";
-import { type PageResponse } from "~/types";
+import { type Chapter, type PageResponse } from "~/types";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const chapters = await getAllPageSlugs();
@@ -18,7 +18,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<
   { data: [PageResponse] },
-  Pick<PageResponse, "slug">
+  Pick<Chapter, "slug">
 > = async (context) => {
   if (!context.params) throw new Error("No params provided");
   const data = await getPage(context.params.slug);
@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps<
   };
 };
 
-const RuleBookHome: NextPage<{ data: [PageResponse] }> = ({ data }) => {
+const RuleBookPage: NextPage<{ data: PageResponse }> = ({ data }) => {
   return (
     <>
       <Head>
@@ -38,19 +38,33 @@ const RuleBookHome: NextPage<{ data: [PageResponse] }> = ({ data }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {data.map((page) => (
-        <div
+        <article
           key={page._id}
-          className="flex flex-col items-center gap-4 bg-base-300/60 px-48 py-8"
+          className="items-left flex flex-col gap-4 bg-base-300/60 px-48 py-8"
         >
-          <h1 className="text-6xl font-black text-white">{page.chapter}</h1>
-          <PortableText
-            components={portableComponentsMap}
-            value={page.content}
-          />
-        </div>
+          <h1 className="text-6xl font-black text-white">
+            {page.sections[0]?.title}
+          </h1>
+          {page.sections.map((section, index) => (
+            <section
+              key={section._key}
+              className="items-left flex flex-col gap-4 py-8"
+            >
+              {index > 0 && (
+                <h2 className="text-5xl font-black text-white">
+                  {section.title}
+                </h2>
+              )}
+              <PortableText
+                components={portableComponentsMap}
+                value={section.content}
+              />
+            </section>
+          ))}
+        </article>
       ))}
     </>
   );
 };
 
-export default RuleBookHome;
+export default RuleBookPage;

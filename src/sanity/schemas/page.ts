@@ -20,21 +20,14 @@ export const pageSchema = defineType({
       },
     }),
     defineField({
-      title: "Content",
-      name: "content",
+      title: "Sections",
+      name: "sections",
       type: "array",
       of: [
-        { type: "block" },
         {
-          type: "image",
-          options: { hotspot: true },
-          fields: [
-            {
-              name: "alt",
-              title: "Alt Text",
-              type: "string",
-            },
-          ],
+          type: "reference",
+          name: "sections",
+          to: [{ type: "section" }],
         },
       ],
     }),

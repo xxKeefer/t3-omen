@@ -21,7 +21,7 @@ export const Shell = ({ children }: Props) => {
       />
       <div className="drawer-content max-h-min">
         <Header toggleSideMenu={toggle} />
-        <main className="h-[calc(100dvh_-_4rem)] overflow-y-auto bg-gradient-to-tl from-neutral via-accent to-secondary ">
+        <main className="h-[calc(100dvh_-_4rem)] overflow-y-auto bg-gradient-to-tl from-indigo-900 via-accent to-secondary ">
           {children}
         </main>
       </div>

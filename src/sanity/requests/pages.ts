@@ -20,9 +20,15 @@ export const getAllPages = () => {
   const response = cms.fetch(groq`
   *[_type=='page']{
     _id,
-    slug,
     chapter,
-    content[]{
+    "slug":slug.current,
+    sections[]{
+      _type != 'reference' => @,
+      _type != 'reference' => @->{
+        _type,
+        "anchor":anchor.current,
+        title,
+        content[]{
       _type == 'image' => {
         _key,
         _type,
@@ -33,6 +39,8 @@ export const getAllPages = () => {
         }
       },
       _type != 'image' => @,
+    }
+      },
     }
   }
   `);
@@ -44,8 +52,14 @@ export const getPage = (slug?: string) => {
   *[_type=='page' && slug.current == "${slug}"]{
     _id,
     chapter,
-    slug,
-    content[]{
+    "slug":slug.current,
+    sections[]{
+      _type != 'reference' => @,
+      _type != 'reference' => @->{
+        _type,
+        "anchor":anchor.current,
+        title,
+        content[]{
       _type == 'image' => {
         _key,
         _type,
@@ -57,7 +71,11 @@ export const getPage = (slug?: string) => {
       },
       _type != 'image' => @,
     }
+      },
+    }
   }
   `);
   return response as Promise<[PageResponse]>;
 };
+
+//TODO: update this to match schema
