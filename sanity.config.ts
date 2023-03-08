@@ -2,6 +2,7 @@ import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 import { env } from "~/env.mjs";
+import { pageSchema } from "~/sanity/schemas";
 
 // import { schemaTypes } from "./schemas";
 
@@ -20,8 +21,7 @@ export default defineConfig({
   //TODO: add schemas for rules
   // https://www.sanity.io/docs/create-a-schema-and-configure-sanity-studio
 
-  //   schema: {
-  //     types: schemaTypes,
-  //   },
-  schema: undefined,
+  schema: {
+    types: [pageSchema],
+  },
 });

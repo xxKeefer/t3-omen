@@ -8,6 +8,7 @@ import {
 import { api } from "~/utils/api";
 import type { inferRouterInputs } from "@trpc/server";
 import type { AppRouter } from "~/server/api/root";
+import Head from "next/head";
 
 type Filter = inferRouterInputs<AppRouter>["adminDashboard"]["getUsers"];
 
@@ -50,22 +51,29 @@ const Dashboard: NextPage = () => {
   };
 
   return (
-    <div className="h-full w-full p-4 ">
-      <div className="card bg-neutral-100 shadow-xl">
-        <div className="card-body flex flex-col items-center gap-4 text-center">
-          <AdminDashboardControls
-            filterText={filterText}
-            selectRole={selectRole}
-          />
-          <AdminDashboardTable users={users} />
-          <AdminDashboardPagination
-            nextPageDisabled={nextPageDisabled}
-            prevPageDisabled={prevPageDisabled}
-            selectPageSize={selectPageSize}
-          />
+    <>
+      <Head>
+        <title>Omen | Admins</title>
+        <meta name="description" content="Omen: A story driven table top RPG" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="h-full w-full p-4 ">
+        <div className="card bg-neutral-100 shadow-xl">
+          <div className="card-body flex flex-col items-center gap-4 text-center">
+            <AdminDashboardControls
+              filterText={filterText}
+              selectRole={selectRole}
+            />
+            <AdminDashboardTable users={users} />
+            <AdminDashboardPagination
+              nextPageDisabled={nextPageDisabled}
+              prevPageDisabled={prevPageDisabled}
+              selectPageSize={selectPageSize}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -10,7 +10,7 @@ export default function StudioPage() {
       <Head>
         <NextStudioHead />
       </Head>
-      <div className="w-full overflow-y-hidden [&>*]:w-full">
+      <div className="sanity-studio-fix w-full">
         <NextStudio config={config} />
       </div>
     </>

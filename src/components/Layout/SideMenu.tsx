@@ -1,6 +1,7 @@
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
+import { FiExternalLink } from "react-icons/fi";
 
 type Props = {
   closeMenu: () => void;
@@ -34,13 +35,35 @@ export const SideMenu = ({ closeMenu }: Props) => {
         <span>Omen</span>
       </li>
       <li>
-        <a>User Option</a>
+        <Link href={"/book"}>
+          <button onClick={closeMenu}>Guide Book</button>
+        </Link>
       </li>
+
       <li className="menu-title">
         <span>Tools</span>
       </li>
       <li>
-        <a>User Option</a>
+        <a
+          href="https://bulkimagecrop.com/"
+          target="_blank"
+          rel="noopener"
+          className="gap-4"
+        >
+          Bulk Image Crop
+          <FiExternalLink />
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://rolladvantage.com/tokenstamp/"
+          target="_blank"
+          rel="noopener"
+          className="gap-4"
+        >
+          Token Stamper
+          <FiExternalLink />
+        </a>
       </li>
     </ul>
   );

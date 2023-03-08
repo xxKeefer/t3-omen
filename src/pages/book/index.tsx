@@ -1,7 +1,18 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import { getAllPageSlugs } from "~/sanity/requests";
+import { type AllPageSlugsResponse } from "~/types";
 
-const RuleBookHome: NextPage = () => {
+export const getStaticProps: GetStaticProps = async () => {
+  const data = await getAllPageSlugs();
+  return {
+    props: {
+      data,
+    },
+  };
+};
+
+const RuleBookHome: NextPage<{ data: AllPageSlugsResponse }> = ({ data }) => {
   return (
     <>
       <Head>
@@ -9,15 +20,9 @@ const RuleBookHome: NextPage = () => {
         <meta name="description" content="Omen: A story driven table top RPG" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="hero">
-        <div className="hero-content text-center">
-          <div className="max-w-2xl">
-            <h1 className="text-9xl font-black tracking-tight text-white">
-              Rule Book Stuff
-            </h1>
-          </div>
-        </div>
-      </div>
+      {data.map(({ slug, chapter }) => (
+        <p key={slug}>{chapter}</p>
+      ))}
     </>
   );
 };
