@@ -12,6 +12,7 @@
   }
   html {
     font-family: "Mona Sans", system-ui, sans-serif;
+    scroll-behavior: smooth;
   }
 
   .sanity-studio-fix > div {

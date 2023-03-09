@@ -10,7 +10,7 @@ export const Shell = ({ children }: Props) => {
   const [show, setShow] = useState(false);
   const toggle = () => setShow(!show);
   return (
-    <div className="drawer max-h-screen">
+    <div className="drawer max-h-screen scroll-smooth">
       <input
         id="side-menu-drawer"
         title="side menu toggle"

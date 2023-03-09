@@ -1,4 +1,5 @@
 import { defineType, defineField } from "sanity";
+import { isUnique } from "~/utils/sanity.uniqueSlug";
 
 export const sectionSchema = defineType({
   title: "Section",
@@ -11,14 +12,13 @@ export const sectionSchema = defineType({
       type: "string",
     }),
     defineField({
-      title: "Anchor",
-      name: "anchor",
+      title: "Slug",
+      name: "slug",
       type: "slug",
       options: {
         source: "title",
         maxLength: 96,
-        slugify: (input) =>
-          input.toLowerCase().replace(/\s+/g, "-").slice(0, 200) + "-section",
+        isUnique,
       },
     }),
     defineField({
