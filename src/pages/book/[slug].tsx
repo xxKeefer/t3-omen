@@ -38,28 +38,28 @@ const RuleBookPage: NextPage<{ data: PageResponse }> = ({ data: page }) => {
       <Head title={seo.title} meta={seo.meta} />
       <article
         key={page._id}
-        className="items-left flex flex-col gap-4 bg-base-300/60 px-48 py-8"
+        className="items-left flex flex-col gap-2 bg-base-300/60 px-8 sm:gap-4 sm:px-16 sm:py-4 md:px-48 lg:px-64 lg:py-8"
       >
         {page.sections.map((section, index) => (
           <section
             key={section._key}
-            className="items-left flex flex-col gap-4 py-8"
+            className="items-left flex flex-col gap-2 py-4 sm:gap-4 sm:py-4"
           >
             {index > 0 ? (
               <h2
                 id={section.slug}
-                className="relative text-5xl font-black text-white"
+                className="text-5xl font-black text-white xl:whitespace-nowrap"
               >
-                <Anchor href={`#${section.slug}`} />
                 {section.title}
+                <Anchor href={`#${section.slug}`} />
               </h2>
             ) : (
               <h1
                 id={page.slug}
-                className="relative text-6xl font-black text-white"
+                className="text-6xl font-black text-white xl:whitespace-nowrap"
               >
-                <Anchor href={`#${page.slug}`} />
                 {page.sections[0]?.title}
+                <Anchor href={`#${page.slug}`} />
               </h1>
             )}
             <PortableText

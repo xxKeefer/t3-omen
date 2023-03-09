@@ -20,7 +20,7 @@ type Dimensions = {
 export const PortableImage = ({ value }: PortableImageProps) => {
   return (
     <Image
-      className="aspect-square max-w-md self-center"
+      className="aspect-square max-w-xs self-center  sm:max-w-sm md:max-w-md lg:max-w-lg"
       src={value.url}
       alt={value.alt}
       height={value.dimensions.height}

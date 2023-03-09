@@ -10,7 +10,7 @@ export const Anchor = ({ href }: Props) => {
   return (
     <Link
       href={href}
-      className="absolute -left-8 top-1/4 text-xl [&>svg]:stroke-neutral [&>svg]:hover:stroke-primary"
+      className=" ml-2 inline-block align-middle text-2xl [&>svg]:stroke-neutral [&>svg]:hover:stroke-primary"
     >
       <FiLink />
     </Link>

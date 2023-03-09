@@ -12,11 +12,11 @@ const Home: NextPage = () => {
       </Head>
       <div className="hero h-full">
         <div className="hero-content text-center">
-          <div className="max-w-md">
-            <h1 className="text-9xl font-black tracking-tighter text-white">
+          <div className="max-w-xs sm:max-w-md">
+            <h1 className="text-7xl font-black tracking-tighter text-white sm:text-9xl">
               Omen
             </h1>
-            <h2 className="py-6 text-5xl font-normal text-white">
+            <h2 className="py-6 text-2xl font-normal text-white sm:text-5xl">
               The Story Driven Table Top RPG.
             </h2>
             <Link href="/book">
