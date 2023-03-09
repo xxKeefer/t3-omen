@@ -8,15 +8,13 @@ import type {
 } from "~/types";
 import { client as cms } from "~/utils/sanity.client";
 
-export const getAllPageSlugs = () => {
-  const response = cms.fetch(groq`
+export const getAllPageSlugs = () =>
+  cms.fetch<AllPageSlugsResponse>(groq`
   *[_type=='page']{
     'slug':slug.current,
     chapter
   }
   `);
-  return response as Promise<AllPageSlugsResponse>;
-};
 
 const GroqChapterLinks = `{
     _id,
@@ -31,18 +29,14 @@ const GroqChapterLinks = `{
     }
   }`;
 
-export const getAllChapterLinks = () => {
-  const response = cms.fetch(groq`
+export const getAllChapterLinks = () =>
+  cms.fetch<AllChapterLinksResponse>(groq`
   *[_type=='page']${GroqChapterLinks}
   `);
-  return response as Promise<AllChapterLinksResponse>;
-};
-export const getChapterLinks = (chapter: string) => {
-  const response = cms.fetch(groq`
+export const getChapterLinks = (chapter: string) =>
+  cms.fetch<ChapterLinksResponse>(groq`
   *[_type=='page' && chapter == "${chapter}"][0]]${GroqChapterLinks}
   `);
-  return response as Promise<ChapterLinksResponse>;
-};
 
 const GroqPage = `{
     _id,
@@ -71,15 +65,11 @@ const GroqPage = `{
     }
   }`;
 
-export const getAllPages = () => {
-  const response = cms.fetch(groq`
+export const getAllPages = () =>
+  cms.fetch<AllPagesResponse>(groq`
   *[_type=='page']${GroqPage}
   `);
-  return response as Promise<AllPagesResponse>;
-};
 
-export const getPage = (slug?: string) => {
-  const response = cms.fetch(groq`
+export const getPage = (slug?: string) =>
+  cms.fetch<PageResponse>(groq`
   *[_type=='page' && slug.current == "${slug}"][0]${GroqPage}`);
-  return response as Promise<PageResponse>;
-};
