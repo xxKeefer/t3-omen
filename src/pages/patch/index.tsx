@@ -44,7 +44,7 @@ const PatchNotesHome: NextPage<{ data: AllPatchNotesResponse }> = ({
             </h2>
             <div className="collapse-content flex flex-col gap-4">
               <PortableText
-                components={portableComponentsMap}
+                components={portableComponentsMap()}
                 value={latest.content}
               />
             </div>
