@@ -42,6 +42,7 @@ const RuleBookPage: NextPage<{ data: Chapter }> = ({ data: page }) => {
           return (
             <section
               key={section._key}
+              id={section.slug}
               className="items-left flex flex-col gap-2 py-4 sm:gap-4 sm:py-4"
             >
               <PortableText
