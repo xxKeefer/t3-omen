@@ -2,10 +2,8 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { PortableText } from "@portabletext/react";
 import { portableComponentsMap } from "~/components/sanity/PortableText";
 import { getAllPageSlugs, getPage } from "~/sanity/requests";
-import { type Chapter, type PageResponse } from "~/types";
+import { type Chapter } from "~/types";
 import { Head } from "~/components/Layout";
-import { FiLink } from "react-icons/fi";
-import { Anchor } from "~/components/Buttons";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const chapters = await getAllPageSlugs();
@@ -19,7 +17,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<
-  { data: PageResponse },
+  { data: Chapter },
   Pick<Chapter, "slug">
 > = async (context) => {
   if (!context.params) throw new Error("No params provided");
@@ -31,7 +29,7 @@ export const getStaticProps: GetStaticProps<
   };
 };
 
-const RuleBookPage: NextPage<{ data: PageResponse }> = ({ data: page }) => {
+const RuleBookPage: NextPage<{ data: Chapter }> = ({ data: page }) => {
   const { seo } = page;
   return (
     <>
@@ -40,34 +38,19 @@ const RuleBookPage: NextPage<{ data: PageResponse }> = ({ data: page }) => {
         key={page._id}
         className="items-left flex flex-col gap-2 bg-base-300/60 px-8 sm:gap-4 sm:px-16 sm:py-4 md:px-48 lg:px-64 lg:py-8"
       >
-        {page.sections.map((section, index) => (
-          <section
-            key={section._key}
-            className="items-left flex flex-col gap-2 py-4 sm:gap-4 sm:py-4"
-          >
-            {index > 0 ? (
-              <h2
-                id={section.slug}
-                className="text-5xl font-black text-white xl:whitespace-nowrap"
-              >
-                {section.title}
-                <Anchor href={`#${section.slug}`} />
-              </h2>
-            ) : (
-              <h1
-                id={page.slug}
-                className="text-6xl font-black text-white xl:whitespace-nowrap"
-              >
-                {page.sections[0]?.title}
-                <Anchor href={`#${page.slug}`} />
-              </h1>
-            )}
-            <PortableText
-              components={portableComponentsMap}
-              value={section.content}
-            />
-          </section>
-        ))}
+        {page.sections.map((section) => {
+          return (
+            <section
+              key={section._key}
+              className="items-left flex flex-col gap-2 py-4 sm:gap-4 sm:py-4"
+            >
+              <PortableText
+                components={portableComponentsMap(`#${section.slug}`)}
+                value={section.content}
+              />
+            </section>
+          );
+        })}
       </article>
     </>
   );

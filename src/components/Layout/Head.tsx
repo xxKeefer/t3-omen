@@ -13,7 +13,7 @@ export const Head = ({
 }: Props) => {
   return (
     <NextHead>
-      <title>Omen | {title}</title>
+      <title>{title}</title>
       <meta name="description" content={meta} />
       {robots && <meta name="robots" content={robots} />}
       <link rel="icon" href="/favicon.ico" />

@@ -36,16 +36,19 @@ const RuleBookHome: NextPage<{ data: AllChapterLinksResponse }> = ({
               <h2 className="text-4xl font-bold">{chapter}</h2>
             </Link>
             <ul className="menu ">
-              {sections.map(({ title, slug: anchor }) => (
-                <li key={anchor} className="pl-2 sm:pl-4">
-                  <Link
-                    href={`/book/${slug}#${anchor}`}
-                    className="text-neutral hover:text-secondary"
-                  >
-                    {title}
-                  </Link>
-                </li>
-              ))}
+              {sections.map(({ title, slug: anchor }, index) => {
+                if (index > 0)
+                  return (
+                    <li key={anchor} className="pl-2 sm:pl-4">
+                      <Link
+                        href={`/book/${slug}#${anchor}`}
+                        className="text-neutral hover:text-secondary"
+                      >
+                        {title}
+                      </Link>
+                    </li>
+                  );
+              })}
             </ul>
           </div>
         ))}

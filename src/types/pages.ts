@@ -2,13 +2,9 @@ import { type PortableTextBlock } from "@portabletext/types";
 
 export type AllPagesResponse = Array<Chapter>;
 
-export type PageResponse = Chapter;
-
 export type AllPageSlugsResponse = Array<{ slug: string; chapter: string }>;
 
 export type AllChapterLinksResponse = Array<ChapterLinks>;
-
-export type ChapterLinksResponse = ChapterLinks;
 
 export type Chapter = {
   _id: string;

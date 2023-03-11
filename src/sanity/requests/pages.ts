@@ -3,10 +3,11 @@ import type {
   AllChapterLinksResponse,
   AllPageSlugsResponse,
   AllPagesResponse,
-  ChapterLinksResponse,
-  PageResponse,
+  ChapterLinks,
+  Chapter,
 } from "~/types";
 import { client as cms } from "~/utils/sanity.client";
+import { GroqContent } from "./partials";
 
 export const getAllPageSlugs = () =>
   cms.fetch<AllPageSlugsResponse>(groq`
@@ -34,7 +35,7 @@ export const getAllChapterLinks = () =>
   *[_type=='page']${GroqChapterLinks}
   `);
 export const getChapterLinks = (chapter: string) =>
-  cms.fetch<ChapterLinksResponse>(groq`
+  cms.fetch<ChapterLinks>(groq`
   *[_type=='page' && chapter == "${chapter}"][0]]${GroqChapterLinks}
   `);
 
@@ -49,18 +50,7 @@ const GroqPage = `{
         _type,
         "slug":slug.current,
         title,
-        content[]{
-      _type == 'image' => {
-        _key,
-        _type,
-        alt,
-        'url': asset->url,
-        'dimensions': asset->metadata.dimensions{
-          width, height, aspectRatio
-        }
-      },
-      _type != 'image' => @,
-    }
+        ${GroqContent}
       },
     }
   }`;
@@ -71,5 +61,5 @@ export const getAllPages = () =>
   `);
 
 export const getPage = (slug?: string) =>
-  cms.fetch<PageResponse>(groq`
+  cms.fetch<Chapter>(groq`
   *[_type=='page' && slug.current == "${slug}"][0]${GroqPage}`);
