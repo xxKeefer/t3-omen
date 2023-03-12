@@ -3,6 +3,7 @@ import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 import { env } from "~/env.mjs";
 import { pageSchema, patchNotesSchema, sectionSchema } from "~/sanity/schemas";
+import { table } from "@sanity/table";
 
 const projectId = env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = env.NEXT_PUBLIC_SANITY_DATASET;
@@ -14,7 +15,7 @@ export default defineConfig({
   dataset,
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  plugins: [deskTool(), visionTool()],
+  plugins: [deskTool(), visionTool(), table()],
 
   // https://www.sanity.io/docs/create-a-schema-and-configure-sanity-studio
 

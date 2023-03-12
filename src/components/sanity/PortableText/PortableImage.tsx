@@ -20,7 +20,7 @@ type Dimensions = {
 export const PortableImage = ({ value }: PortableImageProps) => {
   return (
     <Image
-      className="aspect-auto max-h-[18rem] max-w-xs self-center object-cover sm:max-h-[24rem] sm:max-w-sm md:max-h-[30rem] md:max-w-lg lg:max-h-[36rem] lg:max-w-2xl"
+      className="aspect-auto max-h-[18rem] max-w-xs self-center object-cover sm:max-h-[24rem] sm:max-w-sm md:max-h-[30rem] md:max-w-md lg:max-h-[36rem] lg:max-w-xl"
       src={value.url}
       alt={value.alt}
       height={value.dimensions.height}
