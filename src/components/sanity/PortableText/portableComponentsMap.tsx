@@ -1,40 +1,14 @@
 import { type PortableTextReactComponents } from "@portabletext/react";
 import { Anchor } from "~/components/Buttons";
 import { PortableImage, type PortableImageProps } from "./PortableImage";
-import { type TableValue } from "@sanity/table";
+import { PortableTable, type PortableTableProps } from "./PortableTable";
 
 export const portableComponentsMap = (
   anchor?: `#${string}`
 ): Partial<PortableTextReactComponents> => ({
   types: {
     image: ({ value }: PortableImageProps) => <PortableImage value={value} />,
-    table: ({ value }: { value: TableValue }) => (
-      <div className="overflow-x-auto">
-        <table className="table w-full">
-          <tbody>
-            {value.rows.map((row, rowIndex) =>
-              rowIndex === 0 ? (
-                <tr key={row._key}>
-                  {row.cells.map(
-                    (text, cellIndex) => text && <th key={cellIndex}>{text}</th>
-                  )}
-                </tr>
-              ) : (
-                <tr key={row._key}>
-                  {row.cells.map((text, cellIndex) =>
-                    cellIndex === 0 ? (
-                      text && <th key={cellIndex}>{text}</th>
-                    ) : (
-                      <td key={cellIndex}>{text}</td>
-                    )
-                  )}
-                </tr>
-              )
-            )}
-          </tbody>
-        </table>
-      </div>
-    ),
+    table: ({ value }: PortableTableProps) => <PortableTable value={value} />,
   },
   block: {
     h1: ({ children }) => (
