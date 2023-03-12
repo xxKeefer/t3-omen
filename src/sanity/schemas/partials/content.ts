@@ -17,5 +17,6 @@ export const contentBlock = defineField({
         },
       ],
     },
+    { type: "table" },
   ],
 });

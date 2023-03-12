@@ -35,7 +35,7 @@ export const getAllChapterLinks = () =>
   *[_type=='page']${GroqChapterLinks}
   `);
 export const getChapterLinks = (chapter: string) =>
-  cms.fetch<ChapterLinks>(groq`
+  cms.fetch<ChapterLinks | null>(groq`
   *[_type=='page' && chapter == "${chapter}"][0]]${GroqChapterLinks}
   `);
 
@@ -61,5 +61,5 @@ export const getAllPages = () =>
   `);
 
 export const getPage = (slug?: string) =>
-  cms.fetch<Chapter>(groq`
+  cms.fetch<Chapter | null>(groq`
   *[_type=='page' && slug.current == "${slug}"][0]${GroqPage}`);

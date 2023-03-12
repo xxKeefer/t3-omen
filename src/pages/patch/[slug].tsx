@@ -17,11 +17,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<
-  { data: PatchNotes },
+  { data: PatchNotes | null },
   Pick<PatchNotes, "slug">
 > = async (context) => {
   if (!context.params) throw new Error("No params provided");
   const patch = await getPatchNotes(context.params.slug);
+  if (!patch) {
+    return {
+      notFound: true,
+    };
+  }
   return {
     props: {
       data: patch,
