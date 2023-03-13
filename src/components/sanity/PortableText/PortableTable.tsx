@@ -7,7 +7,7 @@ export type PortableTableProps = {
 
 export const PortableTable = ({ value }: PortableTableProps) => {
   return (
-    <div className="overflow-x-auto">
+    <div className="max-w-full overflow-x-auto">
       <table className="table w-full">
         <tbody>
           {value.rows.map((row, rowIndex) =>
@@ -23,7 +23,12 @@ export const PortableTable = ({ value }: PortableTableProps) => {
                   cellIndex === 0 ? (
                     text && <th key={cellIndex}>{text}</th>
                   ) : (
-                    <td key={cellIndex}>{text}</td>
+                    <td
+                      key={cellIndex}
+                      className="whitespace-normal p-2 sm:p-4"
+                    >
+                      {text}
+                    </td>
                   )
                 )}
               </tr>

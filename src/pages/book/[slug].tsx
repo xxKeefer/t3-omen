@@ -41,7 +41,7 @@ const RuleBookPage: NextPage<{ data: Chapter }> = ({ data: page }) => {
     <>
       <Head title={seo.title} meta={seo.meta} />
       <div className="flex bg-base-300/60">
-        <aside className="sticky top-0 hidden flex-grow self-start p-4 md:block md:pr-0 lg:min-w-max">
+        <aside className="sticky top-0 hidden self-start p-4 md:block md:pr-0 lg:min-w-max">
           <nav className="rounded-box flex flex-col bg-base-100 p-4 landscape:h-[calc(100dvh_-_6rem)]">
             <h3 className="text-xl font-black">On this page:</h3>
             <ul className="menu flex-nowrap overflow-y-auto">
@@ -60,7 +60,7 @@ const RuleBookPage: NextPage<{ data: Chapter }> = ({ data: page }) => {
         </aside>
         <article
           key={page._id}
-          className="items-left flex flex-shrink flex-col gap-2 px-4 sm:gap-4 md:px-8 lg:px-16"
+          className="items-left flex  flex-col gap-2 px-4 sm:gap-4 md:px-8 lg:px-16"
         >
           {page.sections.map((section) => {
             return (
