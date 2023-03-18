@@ -49,6 +49,11 @@ export const SideMenu = ({ closeMenu }: Props) => {
         <span>Tools</span>
       </li>
       <li>
+        <Link href={"/action-card-tool"}>
+          <button onClick={closeMenu}>Action Card Generator</button>
+        </Link>
+      </li>
+      <li>
         <a
           href="https://bulkimagecrop.com/"
           target="_blank"

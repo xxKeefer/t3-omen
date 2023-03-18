@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
-import Head from "next/head";
 import Link from "next/link";
+import { Head } from "~/components/Layout";
 import { getAllChapterLinks } from "~/sanity/requests";
 import { type AllChapterLinksResponse } from "~/types";
 
@@ -18,11 +18,7 @@ const RuleBookHome: NextPage<{ data: AllChapterLinksResponse }> = ({
 }) => {
   return (
     <>
-      <Head>
-        <title>Omen | Rules</title>
-        <meta name="description" content="Omen: A story driven table top RPG" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Head title="Omen | Rules" meta="Omen: A story driven table top RPG" />
       <div className="flex flex-wrap gap-2 p-4 sm:p-8">
         {data.map(({ slug, chapter, sections, _id }) => (
           <div

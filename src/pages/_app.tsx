@@ -8,6 +8,7 @@ import "~/styles/globals.css";
 import { Shell } from "~/components/Layout";
 import { PrivateRoute } from "~/components/Routes/PrivateRoute";
 import { adminRoutes, protectedRoutes } from "~/constants";
+import { ActionDeckProvider } from "~/contexts/ActionDeckContext";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -15,14 +16,16 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Shell>
-        <PrivateRoute
-          adminRoutes={adminRoutes}
-          protectedRoutes={protectedRoutes}
-        >
-          <Component {...pageProps} />
-        </PrivateRoute>
-      </Shell>
+      <ActionDeckProvider>
+        <Shell>
+          <PrivateRoute
+            adminRoutes={adminRoutes}
+            protectedRoutes={protectedRoutes}
+          >
+            <Component {...pageProps} />
+          </PrivateRoute>
+        </Shell>
+      </ActionDeckProvider>
     </SessionProvider>
   );
 };
