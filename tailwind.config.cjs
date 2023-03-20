@@ -1,8 +1,33 @@
 /** @type {import('tailwindcss').Config} */
 const config = {
+  mode: "jit",
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        dvd: "dvd 15s linear infinite",
+      },
+      keyframes: {
+        dvd: {
+          "0%": { transform: "translateX(0vw) translateY(0vh) rotate(0deg)" },
+          "25%": {
+            transform:
+              "translateX(calc(100vw - 150px)) translateY(0vh) rotate(180deg)",
+          },
+          "50%": {
+            transform:
+              "translateX(calc(100vw - 150px)) translateY(calc(100vh - 150px - 4rem)) rotate(360deg)",
+          },
+          "75%": {
+            transform:
+              "translateX(0vw) translateY(calc(100vh - 150px - 4rem)) rotate(540deg)",
+          },
+          "100%": {
+            transform: "translateX(0vw) translateY(0vh) rotate(720deg)",
+          },
+        },
+      },
+    },
   },
   plugins: [require("daisyui"), require("@tailwindcss/typography")],
 
