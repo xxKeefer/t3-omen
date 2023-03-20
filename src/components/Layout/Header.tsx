@@ -1,6 +1,7 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
+import { SpacemanHead } from "../Svgs";
 
 type Props = {
   toggleSideMenu: () => void;
@@ -34,9 +35,13 @@ export const Header = ({ toggleSideMenu }: Props) => {
           </svg>
         </label>
       </div>
-      <div className="flex-1">
+
+      <div className=" flex-1">
         <Link href={"/"}>
-          <button className="btn-ghost btn text-xl normal-case">Omen</button>
+          <button className="btn-ghost btn flex max-h-full gap-2 text-3xl font-black normal-case">
+            <SpacemanHead className="w-12" />
+            Omen
+          </button>
         </Link>
       </div>
       <div className="flex-none">

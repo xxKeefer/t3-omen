@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import { SpacemanLogo } from "~/components/Svgs";
 
 const Home: NextPage = () => {
   return (
@@ -11,8 +12,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="hero h-full">
-        <div className="hero-content text-center">
-          <div className="max-w-xs sm:max-w-md">
+        <div className="hero-content flex-col lg:flex-row-reverse">
+          <SpacemanLogo className="h-full w-4/5 max-w-sm sm:w-full" />
+          <div className="w-2/3 flex-grow text-center">
             <h1 className="text-7xl font-black tracking-tighter text-white sm:text-9xl">
               Omen
             </h1>
