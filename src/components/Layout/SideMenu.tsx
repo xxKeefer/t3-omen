@@ -44,6 +44,11 @@ export const SideMenu = ({ closeMenu }: Props) => {
           <button onClick={closeMenu}>Patch Notes</button>
         </Link>
       </li>
+      <li>
+        <Link href={"/dashboard"}>
+          <button onClick={closeMenu}>Your Dashboard</button>
+        </Link>
+      </li>
 
       <li className="menu-title">
         <span>Tools</span>
