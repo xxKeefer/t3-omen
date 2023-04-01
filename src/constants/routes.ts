@@ -1,3 +1,3 @@
 export const adminRoutes = ["/admin-dashboard", "/studio"];
 
-export const protectedRoutes = [];
+export const protectedRoutes = ["/dashboard"];

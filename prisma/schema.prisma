@@ -74,11 +74,13 @@ model VerificationToken {
 model CharacterSheetConfig {
   id           Int         @id @default(autoincrement())
   createdBy    User        @relation(fields: [createdById], references: [id], onDelete: Cascade)
-  createdById  String      @unique
+  createdById  String      
   campaignName String
   aspects      Aspects?
   approaches   Approaches?
   skills       Skill[]
+
+  @@index([createdById])
 }
 
 model Aspects {
@@ -105,12 +107,14 @@ model Approaches {
 
 model Skill {
   id       Int                  @id @default(autoincrement())
+  configId Int                  
   config   CharacterSheetConfig @relation(fields: [configId], references: [id], onDelete: Cascade)
   replaces SkillName
   name     String
   approach Approach
   talent   Approach
-  configId Int                  @unique
+
+  @@unique([configId, replaces])
 }
 
 enum Approach {
